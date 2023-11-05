@@ -14,7 +14,7 @@ def gen_password(n, lower=True, upper=True, num=True, sym=True):
     alpha_lower = 'abcdefghijklmnopqrstuvwxyz'
     alpha_upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     nums = '1234567890'
-    syms = '!@#$%^&*?'
+    syms = '^*%$!&@#'
     password = []
     if lower:
         password.append(alpha_lower[random.randint(0, 25)])
@@ -26,7 +26,7 @@ def gen_password(n, lower=True, upper=True, num=True, sym=True):
         password.append(nums[random.randint(0, 9)])
         n -= 1
     if sym:
-        password.append(syms[random.randint(0, 7)])
+        password.append(syms[random.randint(0, 6)])
         n -= 1
     while True:
         if n == 0:
@@ -63,12 +63,12 @@ def password_with_specs():
             break
         else:
             while True:
-                n = input('How many characters would you like in you\'re password? Enter a number. (20 character limit)')
+                n = input('How many characters would you like in you\'re password? Enter a number. (32 character limit)')
                 try:
                     n = int(n)
                     if n < 1:
                         print('Please enter a number greater than 0.')
-                    elif n > 20:
+                    elif n > 32:
                         print('Please enter a lower number.')
                     else:
                         break
